@@ -1,56 +1,201 @@
-.explore-menu{
+/* Explore Menu Container */
+.explore-menu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.explore-menu h1{
-    color: #262626;
-    font-weight: 500;
-}
-
-.explore-menu-text{
-    max-width: 60%;
-    columns: #808080;
-}
-
-.explore-menu-list{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 30px;
+    padding: 0 30px;
+    /* Removed background gradient */
+    border-radius: 15px; /* Optional if you want rounded corners */
+    /* Removed box-shadow */
+}
+
+/* Title Styling */
+.explore-menu h1 {
+    color: #262626;
+    font-weight: 700; /* Bold title */
+    font-size: clamp(28px, 3vw, 36px); /* Adaptive title size */
     text-align: center;
-    margin: 20px 0px;
-    overflow-x: scroll;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
 }
 
-.explore-menu-lis::-webkit-scrollbar{
-    display: none;
+.explore-menu h1:hover {
+    color: tomato; /* Adds hover effect on title */
 }
 
-.explore-menu-list-item img{
-    width: 7.5vw;
-    min-width: 80px;
-    cursor: pointer;
+/* Explore Menu Text */
+.explore-menu-text {
+    max-width: 70%; /* More responsive width for text */
+    margin: 0 auto;
+    color: #808080;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.explore-menu-text:hover {
+    color: #444; /* Slight darkening effect on hover */
+}
+
+/* Explore Menu List (Horizontal layout) */
+.explore-menu-list {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: center;
+    gap: 25px;
+    margin: 30px 0;
+    padding: 0 10px;
+    flex-wrap: nowrap; /* Prevent wrapping of items */
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+/* Food Item Styling */
+.explore-menu-list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px; /* Adjusted width for horizontal display */
+    text-align: center;
+    transition: transform 0.3s ease;
+    padding: 10px; /* Reduced padding */
+    border-radius: 10px; /* Rounded corners */
+    background: #fff; /* Clean white background */
+    /* Removed box-shadow */
+}
+
+/* Hover Effects for Food Item */
+.explore-menu-list-item:hover {
+    transform: translateY(-5px); /* Floating effect */
+    /* Removed box-shadow */
+}
+
+/* Food Item Image Styling */
+.explore-menu-list-item img {
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    transition: 0.2s;
-}
-
-.explore-menu-list-item p{
-    margin-top: 10px;
-    color: #747474;
-    font-size: max(1.4vw, 16px);
+    object-fit: cover;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.explore-menu hr{
-    margin: 10px 0px;
+.explore-menu-list-item img:hover {
+    transform: scale(1.15); /* Zoom effect on hover */
+}
+
+/* Text Styling Under Image */
+.explore-menu-list-item p {
+    margin-top: 10px; /* Reduced margin */
+    color: #747474;
+    font-size: max(1.2vw, 12px); /* Reduced font size for text */
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    white-space: nowrap; /* Prevents text from wrapping */
+    text-overflow: ellipsis; /* Adds ellipsis if the text is too long */
+    overflow: hidden; /* Hides overflowing text */
+}
+
+.explore-menu-list-item p:hover {
+    color: tomato; /* Changes text color on hover */
+    transform: translateY(-2px); /* Adds lift effect on hover */
+}
+
+/* Horizontal Line Styling */
+.explore-menu hr {
+    margin: 15px 0;
     height: 2px;
     background-color: #e2e2e2;
     border: none;
 }
 
-.explore-menu-list-item .active{
+/* Active Food Item */
+.explore-menu-list-item .active {
     border: 4px solid tomato;
-    padding: 2px;
+    padding: 3px;
+    transform: translateY(-3px); /* Lift active item */
+}
+
+/* Media Queries for Better Responsiveness */
+@media (max-width: 1024px) {
+    .explore-menu {
+        padding: 0 20px;
+    }
+
+    .explore-menu-text {
+        max-width: 80%; /* Adjust text width */
+        font-size: 17px;
+    }
+
+    .explore-menu-list {
+        gap: 20px;
+    }
+
+    .explore-menu-list-item {
+        max-width: 120px; /* Narrow down for smaller screens */
+    }
+
+    .explore-menu-list-item img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .explore-menu-list-item p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .explore-menu-list {
+        gap: 15px;
+        flex-wrap: nowrap; /* Ensures single line display */
+        overflow-x: auto; /* Horizontal scrolling */
+    }
+
+    .explore-menu-list-item {
+        max-width: 100px;
+    }
+
+    .explore-menu-list-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .explore-menu-list-item p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .explore-menu {
+        padding: 0 15px;
+    }
+
+    .explore-menu-text {
+        max-width: 90%;
+        font-size: 15px;
+    }
+
+    .explore-menu-list {
+        gap: 10px;
+        overflow-x: auto; /* Horizontal scrolling on smaller screens */
+    }
+
+    .explore-menu-list-item {
+        max-width: 90px;
+    }
+
+    .explore-menu-list-item img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .explore-menu-list-item p {
+        font-size: 12px;
+    }
 }
