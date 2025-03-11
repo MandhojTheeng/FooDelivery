@@ -1,149 +1,130 @@
-/* Background overlay */
-.login-popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    backdrop-filter: blur(4px);
-    animation: fadeIn 0.4s ease-in-out;
+.cart {
+    margin-top: 100px;
+    font-family: 'Arial', sans-serif;
 }
 
-/* Popup Container */
-.login-popup-container {
-    width: min(90%, 400px);
-    background-color: #fff;
-    color: #555;
+.cart-items-title {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr 0.5fr;
+    align-items: center;
+    color: #333;
+    font-size: max(1vw, 12px);
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.cart-items-item {
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 0.5fr;
+    align-items: center;
+}
+
+.cart-items-item img {
+    width: 50px;
+}
+
+.cart-items-item p {
+    font-size: max(1vw, 14px);
+    padding: 5px;
+}
+
+.cart-items-item .cross {
+    cursor: pointer;
+    color: tomato;
+}
+
+.cart hr {
+    height: 1px;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+.cart-bottom {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.cart-total {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-    font-size: 14px;
-    animation: slideUp 0.4s ease-in-out;
 }
 
-/* Title Bar */
-.login-popup-title {
+.cart-total-details {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    color: #222;
-    font-size: 18px;
-    font-weight: bold;
+    color: #555;
+    font-size: max(1vw, 14px);
 }
 
-/* Close Button */
-.login-popup-title img {
-    width: 20px;
+.cart-total hr {
+    margin: 10px 0;
+}
+
+.cart-total button {
+    border: none;
+    color: white;
+    background-color: tomato;
+    padding: 12px 0;
+    width: 100%;
+    max-width: 250px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    font-size: max(1vw, 14px);
 }
 
-.login-popup-title img:hover {
-    transform: rotate(90deg);
-}
-
-/* Input Fields */
-.login-popup-inputs {
+.cart-promocode {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
-.login-popup-inputs input {
-    outline: none;
-    border: 1px solid #ddd;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: all 0.3s ease-in-out;
+.cart-promocode p {
+    color: #555;
+    font-size: max(1vw, 14px);
 }
 
-.login-popup-inputs input:focus {
-    border-color: tomato;
-    box-shadow: 0 0 5px rgba(255, 99, 71, 0.5);
+.cart-promocode-input {
+    display: flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    padding: 5px 10px;
 }
 
-/* Button */
-.login-popup-container button {
+.cart-promocode-input input {
+    background: transparent;
     border: none;
-    padding: 12px;
-    border-radius: 6px;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+    font-size: max(1vw, 14px);
+}
+
+.cart-promocode-input button {
+    padding: 12px 15px;
+    background-color: black;
+    border: none;
     color: white;
-    background: linear-gradient(135deg, #ff6a6a, tomato);
-    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
+    font-size: max(1vw, 14px);
+    width: max(12vw, 150px);
 }
 
-.login-popup-container button:hover {
-    background: linear-gradient(135deg, tomato, #ff3b3b);
-    box-shadow: 0 4px 10px rgba(255, 99, 71, 0.4);
-}
-
-/* Terms & Conditions */
-.login-popup-condition {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 12px;
-    color: #666;
-}
-
-.login-popup-condition label {
-    display: flex;
-    align-items: flex-start;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.login-popup-condition input {
-    margin-top: 3px;
-    cursor: pointer;
-}
-
-/* Link Styling */
-.login-popup p {
-    text-align: center;
-    font-size: 13px;
-}
-
-.login-popup p span {
-    color: tomato;
-    font-weight: 600;
-    cursor: pointer;
-    transition: color 0.3s ease-in-out;
-}
-
-.login-popup p span:hover {
-    color: #ff3b3b;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+@media (max-width: 750px) {
+    .cart-bottom {
+        flex-direction: column;
+        gap: 20px;
     }
-    to {
-        opacity: 1;
-    }
-}
 
-@keyframes slideUp {
-    from {
-        transform: translateY(20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
+    .cart-promocode {
+        width: 100%;
     }
 }
